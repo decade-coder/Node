@@ -1,5 +1,3 @@
-# Drop(点滴)
-
 # 项目功能
 ## 用户管理系统
 ## 内容管理系统
@@ -10,7 +8,8 @@
 
 # 技术栈
 1. Node
-2. MySQL
+2. Koa
+3. MySQL
 
 # 目录
 
@@ -20,4 +19,5 @@
 * @koa/router: koa路由
 * koa-bodyparser: koa解析请求参数
 * dotenv: 解析.env文件内的数据
-* 
+* mysql2
+* koa-session:
