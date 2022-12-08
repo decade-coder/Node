@@ -1,5 +1,5 @@
 # 项目功能
-## 用户管理系统
+## 用户管理系统 
 ## 内容管理系统
 ## 内容评论系统
 ## 内容标签管理
@@ -21,3 +21,4 @@
 * dotenv: 解析.env文件内的数据
 * mysql2
 * koa-session:
+* jsonwebtoken:生成token、校验token
