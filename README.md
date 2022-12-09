@@ -22,3 +22,4 @@
 * mysql2
 * koa-session:
 * jsonwebtoken:生成token、校验token
+* multer、@koa/multer:上传文件

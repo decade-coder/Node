@@ -12,7 +12,6 @@ const verifyUser = async (ctx, next) => {
 
   // 用户名、密码不能为空
   if (!name || !password) {
-    console.log("00000:", ctx);
     return ctx.app.emit("error", NAME_OR_PASSWORD_IS_REQUIRED, ctx);
   }
 

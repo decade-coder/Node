@@ -9,7 +9,7 @@ class MomentService {
   async queryList(offset = 0, size = 10) {
     const statement = `
     SELECT 
-      m.id id,m.content content,m.createAt createTime,m.updateAt updateTime,JSON_OBJECT('id',u.id,'name',u.name,'createTime',u.createAt,'updateTime',u.updateAt) user,
+      m.id id,m.content content,m.createAt createTime,m.updateAt updateTime,JSON_OBJECT('id',u.id,'name',u.name,'avatarUrl',u.avatar_url,'createTime',u.createAt,'updateTime',u.updateAt) user,
       (SELECT COUNT(*) FROM comment WHERE moment_id = m.id) commentCount,
       (SELECT COUNT(*) FROM moment_label ml WHERE ml.moment_id = m.id) labelCount
     FROM moment m 
@@ -23,7 +23,7 @@ class MomentService {
     const statement = `
     SELECT 
     m.id id,m.content content,m.createAt createTime,m.updateAt updateTime,
-    JSON_OBJECT('id',u.id,'name',u.name,'createTime',u.createAt,'updateTime',u.updateAt) user,
+    JSON_OBJECT('id',u.id,'name',u.name,'avatarUrl',u.avatar_url,'createTime',u.createAt,'updateTime',u.updateAt) user,
     (
       SELECT 
       JSON_ARRAYAGG(JSON_OBJECT(
@@ -67,9 +67,7 @@ class MomentService {
   async addLabel(momentId, labelId) {
     const statement =
       "INSERT INTO moment_label (moment_id,label_id) VALUES (?,?);";
-    console.log(22);
     const [result] = await connection.execute(statement, [momentId, labelId]);
-    console.log(111, result);
     return result;
   }
 }

@@ -5,7 +5,6 @@ class momentController {
     const { content } = ctx.request.body;
     // 获取发布动态的用户id
     const { id } = ctx.user;
-    console.log(id, content);
     // 将动态相关数据保存到数据库中
     const result = await momentService.create(content, id);
     ctx.body = {
@@ -42,7 +41,6 @@ class momentController {
   }
   async remove(ctx, next) {
     const { momentId } = ctx.params;
-    console.log(1111, momentId);
     const result = await momentService.remove(momentId);
     ctx.body = {
       code: 0,
