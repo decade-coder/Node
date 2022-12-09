@@ -1,7 +1,4 @@
-// const jwt = require("jsonwebtoken");
 const momentService = require("../service/moment.service");
-// const { UNAUTHORIZATION } = require("../config/error");
-// const { PRIVATE_KEY, PUBLIC_KEY } = require("../config/secret");
 
 class momentController {
   async create(ctx, next) {
@@ -51,6 +48,23 @@ class momentController {
       code: 0,
       message: "删除成功",
       data: result,
+    };
+  }
+
+  async addLabels(ctx, next) {
+    const { labels } = ctx;
+    const { momentId } = ctx.params;
+    for (const label of labels) {
+      const isExists = await momentService.hasLabel(momentId, label.id);
+      // 如果momentId和labelId没有关系
+      if (!isExists) {
+        // 插入数据，记录momentId和labelId关系
+        await momentService.addLabel(momentId, label.id);
+      }
+    }
+    ctx.body = {
+      code: 0,
+      message: "动态添加标签成功！",
     };
   }
 }

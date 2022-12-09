@@ -3,7 +3,7 @@ const commentService = require("../service/comment.service");
 // const { UNAUTHORIZATION } = require("../config/error");
 // const { PRIVATE_KEY, PUBLIC_KEY } = require("../config/secret");
 
-class commentController {
+class CommentController {
   async create(ctx, next) {
     const { content, momentId } = ctx.request.body;
     const { id } = ctx.user;
@@ -65,4 +65,4 @@ class commentController {
   // }
 }
 
-module.exports = new commentController();
+module.exports = new CommentController();
